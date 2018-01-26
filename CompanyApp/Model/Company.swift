@@ -7,3 +7,9 @@
 //
 
 import Foundation
+
+//struct Company {
+//    var name: String
+//    var founded: Date
+//}
+

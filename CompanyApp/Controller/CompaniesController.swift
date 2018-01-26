@@ -7,9 +7,13 @@
 //
 
 import UIKit
+import CoreData
 
 class CompaniesController: UITableViewController {
 
+    var companies = [Company]()
+    let context = CoreDataManager.shared.persistentContainer.viewContext
+    
     let companyCellId = "companyCellId"
     
     override func viewDidLoad() {
@@ -17,18 +21,20 @@ class CompaniesController: UITableViewController {
         view.backgroundColor = .white
         title = "Companies"
         
-        customizeNavigationBar()
         setupNavBarButtons()
         setupTableView()
+        fetchCompanies()
     }
     
-    func customizeNavigationBar() {
-        navigationController?.navigationBar.prefersLargeTitles = true
-        navigationController?.navigationBar.isTranslucent = false
-        navigationController?.navigationBar.barTintColor = .customRed
-        let atts = [NSAttributedStringKey.foregroundColor: UIColor.customLightBlue]
-        navigationController?.navigationBar.largeTitleTextAttributes = atts
-        navigationController?.navigationBar.titleTextAttributes = atts
+    func fetchCompanies() {
+        let request = NSFetchRequest<Company>(entityName: "Company")
+        do {
+            let companies = try context.fetch(request)
+            self.companies = companies
+            self.tableView.reloadData() 
+        } catch let err {
+            print("Not able to fetch data: \(err.localizedDescription)")
+        }
     }
     
     func setupNavBarButtons() {
@@ -44,7 +50,30 @@ class CompaniesController: UITableViewController {
     }
     
     @objc func handleAddCompany() {
-        print("add company")
+        let createCompanyController = CreateCompanyController()
+        createCompanyController.delegate = self
+        let navController = CustomNavigationController(rootViewController: createCompanyController)
+        present(navController, animated: true, completion: nil)
+    }
+    
+    private func deleteHandler(action: UITableViewRowAction, indexPath: IndexPath) {
+        let company = self.companies[indexPath.row]
+        self.companies.remove(at: indexPath.row)
+        self.tableView.deleteRows(at: [indexPath], with: .left)
+        context.delete(company)
+        do {
+            try context.save()
+        } catch let err {
+            print("Failed to delete a company", err.localizedDescription)
+        }
+    }
+    
+    private func edithandler(action: UITableViewRowAction, indexPath: IndexPath) {
+        let createCompanyController = CreateCompanyController()
+        createCompanyController.company = companies[indexPath.row]
+        createCompanyController.delegate = self
+        let navController = CustomNavigationController(rootViewController: createCompanyController)
+        present(navController, animated: true, completion: nil)
     }
 }
 
@@ -55,12 +84,13 @@ extension CompaniesController {
     }
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 4
+        return companies.count
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: companyCellId, for: indexPath) as! CompanyCell
-        cell.textLabel?.text = "The Company Name"
+        let company = companies[indexPath.row]
+        cell.textLabel?.text = company.name
         return cell
     }
     
@@ -72,5 +102,29 @@ extension CompaniesController {
     
     override func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
         return 50
+    }
+    
+    override func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath) -> [UITableViewRowAction]? {
+        let deleteAction = UITableViewRowAction(style: .destructive, title: "Delete", handler: deleteHandler)
+        let editAction = UITableViewRowAction(style: .normal, title: "Edit", handler: edithandler)
+        deleteAction.backgroundColor = UIColor.customRed
+        editAction.backgroundColor = UIColor.customDarkBlue
+        return [deleteAction, editAction]
+    }
+}
+
+extension CompaniesController: CreateCompanyDelegate {
+    
+    func didAddCompany(company: Company) {
+        companies.append(company)
+        let indexPath = IndexPath(row: companies.count - 1, section: 0)
+        tableView.insertRows(at: [indexPath], with: .automatic)
+        tableView.reloadData()
+    }
+    
+    func didEditCompany(company: Company) {
+        guard let row = companies.index(of: company) else { return }
+        let reloadIndexPath = IndexPath(row: row, section: 0)
+        tableView.reloadRows(at: [reloadIndexPath], with: .middle)
     }
 }
