@@ -21,7 +21,9 @@ class CreateCompanyController: UIViewController {
     var company: Company? {
         didSet {
             guard let companyName = company?.name else { return }
+            guard let founded = company?.founded else { return }
             nameTextField.text = companyName
+            datePicker.date = founded
         }
     }
     
@@ -47,6 +49,13 @@ class CreateCompanyController: UIViewController {
         return tf
     }()
     
+    let datePicker: UIDatePicker = {
+        let picker = UIDatePicker()
+        picker.datePickerMode = .date
+        picker.translatesAutoresizingMaskIntoConstraints = false
+        return picker
+    }()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -63,21 +72,26 @@ class CreateCompanyController: UIViewController {
         view.addSubview(mainView)
         mainView.addSubview(nameLabel)
         mainView.addSubview(nameTextField)
+        mainView.addSubview(datePicker)
         
         mainView.topAnchor.constraint(equalTo: view.topAnchor).isActive = true
         mainView.leftAnchor.constraint(equalTo: view.leftAnchor).isActive = true
         mainView.rightAnchor.constraint(equalTo: view.rightAnchor).isActive = true
-        mainView.heightAnchor.constraint(equalToConstant: 50).isActive = true
+        mainView.heightAnchor.constraint(equalToConstant: 250).isActive = true
         
-        nameLabel.leftAnchor.constraint(equalTo: mainView.leftAnchor).isActive = true
-        nameLabel.centerYAnchor.constraint(equalTo: mainView.centerYAnchor).isActive = true
+        nameLabel.topAnchor.constraint(equalTo: view.topAnchor, constant: 16).isActive = true
+        nameLabel.leftAnchor.constraint(equalTo: view.leftAnchor, constant: 16).isActive = true
         nameLabel.widthAnchor.constraint(equalToConstant: 120).isActive = true
-        nameLabel.heightAnchor.constraint(equalToConstant: 40).isActive = true
-        
+
         nameTextField.leftAnchor.constraint(equalTo: nameLabel.rightAnchor).isActive = true
-        nameTextField.rightAnchor.constraint(equalTo: mainView.rightAnchor).isActive = true
-        nameTextField.centerYAnchor.constraint(equalTo: mainView.centerYAnchor).isActive = true
-        nameTextField.heightAnchor.constraint(equalToConstant: 40).isActive = true
+        nameTextField.rightAnchor.constraint(equalTo: view.rightAnchor).isActive = true
+        nameTextField.bottomAnchor.constraint(equalTo: nameLabel.bottomAnchor).isActive = true
+        nameTextField.topAnchor.constraint(equalTo: nameLabel.topAnchor).isActive = true
+        
+        datePicker.topAnchor.constraint(equalTo: nameLabel.bottomAnchor, constant: 16).isActive = true
+        datePicker.leftAnchor.constraint(equalTo: view.leftAnchor).isActive = true
+        datePicker.rightAnchor.constraint(equalTo: view.rightAnchor).isActive = true
+        datePicker.bottomAnchor.constraint(equalTo: mainView.bottomAnchor).isActive = true
     }
     
     func setupNavBarButtonItems() {
@@ -95,6 +109,8 @@ class CreateCompanyController: UIViewController {
     private func createCompany() {
         let company = NSEntityDescription.insertNewObject(forEntityName: "Company", into: context)
         company.setValue(nameTextField.text!, forKey: "name")
+        company.setValue(datePicker.date, forKey: "founded")
+        
         do {
             try context.save()
             dismiss(animated: true, completion: {
@@ -107,6 +123,8 @@ class CreateCompanyController: UIViewController {
     
     private func updateCompany() {
         company?.name = nameTextField.text
+        company?.founded = datePicker.date
+        
         do {
             try context.save()
             dismiss(animated: true, completion: {

@@ -68,12 +68,18 @@ class CompaniesController: UITableViewController {
         }
     }
     
-    private func edithandler(action: UITableViewRowAction, indexPath: IndexPath) {
+    private func editHandler(action: UITableViewRowAction, indexPath: IndexPath) {
         let createCompanyController = CreateCompanyController()
         createCompanyController.company = companies[indexPath.row]
         createCompanyController.delegate = self
         let navController = CustomNavigationController(rootViewController: createCompanyController)
         present(navController, animated: true, completion: nil)
+    }
+    
+    func convertFrom(date: Date) -> String {
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "MMM dd, yyyy"
+        return dateFormatter.string(from: date)
     }
 }
 
@@ -90,7 +96,12 @@ extension CompaniesController {
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: companyCellId, for: indexPath) as! CompanyCell
         let company = companies[indexPath.row]
-        cell.textLabel?.text = company.name
+        if let name = company.name, let founded = company.founded {
+            let foundedDateString = convertFrom(date: founded)
+            cell.textLabel?.text = "\(name) - Founded: \(foundedDateString)"
+        } else {
+            cell.textLabel?.text = "\(company.name ?? "")"
+        }
         return cell
     }
     
@@ -106,7 +117,7 @@ extension CompaniesController {
     
     override func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath) -> [UITableViewRowAction]? {
         let deleteAction = UITableViewRowAction(style: .destructive, title: "Delete", handler: deleteHandler)
-        let editAction = UITableViewRowAction(style: .normal, title: "Edit", handler: edithandler)
+        let editAction = UITableViewRowAction(style: .normal, title: "Edit", handler: editHandler)
         deleteAction.backgroundColor = UIColor.customRed
         editAction.backgroundColor = UIColor.customDarkBlue
         return [deleteAction, editAction]
