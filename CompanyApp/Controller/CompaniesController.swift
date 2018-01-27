@@ -16,6 +16,15 @@ class CompaniesController: UITableViewController {
     
     let companyCellId = "companyCellId"
     
+    let footerLabel: UILabel  = {
+        let label = UILabel()
+        label.text = "No data available"
+        label.textColor = UIColor.customLightBlue
+        label.font = UIFont(name: "AvenirNext-Bold", size: 15)
+        label.textAlignment = .center
+        return label
+    }()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .white
@@ -37,11 +46,6 @@ class CompaniesController: UITableViewController {
         }
     }
     
-    func setupNavBarButtons() {
-        let rightBarButtonItem = UIBarButtonItem(image: #imageLiteral(resourceName: "plus"), style: .plain, target: self, action: #selector(handleAddCompany))
-        navigationItem.rightBarButtonItem = rightBarButtonItem
-    }
-    
     func setupTableView() {
         tableView.backgroundColor = .customDarkBlue
         tableView.separatorColor = .white
@@ -49,11 +53,35 @@ class CompaniesController: UITableViewController {
         tableView.tableFooterView = UIView()
     }
     
-    @objc func handleAddCompany() {
+    func setupNavBarButtons() {
+        let rightBarButtonItem = UIBarButtonItem(image: #imageLiteral(resourceName: "plus"), style: .plain, target: self, action: #selector(handleAddCompany))
+        let leftBarButtonItem = UIBarButtonItem(title: "Reset", style: .plain, target: self, action: #selector(handleReset))
+        navigationItem.rightBarButtonItem = rightBarButtonItem
+        navigationItem.leftBarButtonItem = leftBarButtonItem
+    }
+    
+    @objc private func handleAddCompany() {
         let createCompanyController = CreateCompanyController()
         createCompanyController.delegate = self
         let navController = CustomNavigationController(rootViewController: createCompanyController)
         present(navController, animated: true, completion: nil)
+    }
+    
+    @objc private func handleReset() {
+        let batchDeleteRequest = NSBatchDeleteRequest(fetchRequest: Company.fetchRequest())
+        do {
+            try context.execute(batchDeleteRequest)
+            var indexPathsToRemove = [IndexPath]()
+            for (index, _) in companies.enumerated() {
+                let indexPath = IndexPath(row: index, section: 0)
+                indexPathsToRemove.append(indexPath)
+            }
+            companies.removeAll()
+            tableView.deleteRows(at: indexPathsToRemove, with: .left)
+        } catch let err {
+            print("Can't remove data", err.localizedDescription)
+        }
+
     }
     
     private func deleteHandler(action: UITableViewRowAction, indexPath: IndexPath) {
@@ -102,6 +130,11 @@ extension CompaniesController {
         } else {
             cell.textLabel?.text = "\(company.name ?? "")"
         }
+        if let imageData = company.imageData {
+            cell.imageView?.image = UIImage(data: imageData)
+        } else {
+            cell.imageView?.image = #imageLiteral(resourceName: "select_photo_empty")
+        }
         return cell
     }
     
@@ -113,6 +146,14 @@ extension CompaniesController {
     
     override func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
         return 50
+    }
+    
+    override func tableView(_ tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
+        return footerLabel
+    }
+    
+    override func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
+        return companies.count == 0 ? 150 : 0
     }
     
     override func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath) -> [UITableViewRowAction]? {
