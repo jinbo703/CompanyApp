@@ -7,30 +7,42 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		3618BF6A201C26A300EFD7C1 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3618BF69201C26A300EFD7C1 /* Extensions.swift */; };
+		3618BF6D201CA37000EFD7C1 /* EmployeesController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3618BF6C201CA37000EFD7C1 /* EmployeesController.swift */; };
+		3618BF70201CA9A400EFD7C1 /* CreateEmployeeController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3618BF6F201CA9A400EFD7C1 /* CreateEmployeeController.swift */; };
+		3618BF72201CAA1600EFD7C1 /* CreateCompanyController+ImagePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3618BF71201CAA1600EFD7C1 /* CreateCompanyController+ImagePicker.swift */; };
+		3618BF74201CACDD00EFD7C1 /* NavBarButtonItems+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3618BF73201CACDD00EFD7C1 /* NavBarButtonItems+Extension.swift */; };
 		3622DEF72019697D009A3F59 /* CompanyAppModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 3622DEF52019697D009A3F59 /* CompanyAppModel.xcdatamodeld */; };
 		3622DEF9201974EA009A3F59 /* CoreDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3622DEF8201974EA009A3F59 /* CoreDataManager.swift */; };
+		3622DF1B201C227A009A3F59 /* CompaniesController+Protocols.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3622DF1A201C227A009A3F59 /* CompaniesController+Protocols.swift */; };
+		3622DF1D201C22CD009A3F59 /* CompaniesController+TableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3622DF1C201C22CD009A3F59 /* CompaniesController+TableView.swift */; };
 		3634AB5420189B5E001EA7C7 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3634AB5320189B5E001EA7C7 /* AppDelegate.swift */; };
 		3634AB5620189B5E001EA7C7 /* CompaniesController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3634AB5520189B5E001EA7C7 /* CompaniesController.swift */; };
 		3634AB5B20189B5E001EA7C7 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3634AB5A20189B5E001EA7C7 /* Assets.xcassets */; };
 		3634AB5E20189B5E001EA7C7 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3634AB5C20189B5E001EA7C7 /* LaunchScreen.storyboard */; };
-		3645F8672018A50700B430D6 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3645F8662018A50700B430D6 /* Extensions.swift */; };
+		3645F8672018A50700B430D6 /* UIColor+Themes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3645F8662018A50700B430D6 /* UIColor+Themes.swift */; };
 		3645F86C2018AB9600B430D6 /* CompanyCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3645F86B2018AB9600B430D6 /* CompanyCell.swift */; };
-		3645F86F2018ABD200B430D6 /* Company.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3645F86E2018ABD200B430D6 /* Company.swift */; };
 		3645F8722018AF0000B430D6 /* CreateCompanyController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3645F8712018AF0000B430D6 /* CreateCompanyController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		3618BF69201C26A300EFD7C1 /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
+		3618BF6C201CA37000EFD7C1 /* EmployeesController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmployeesController.swift; sourceTree = "<group>"; };
+		3618BF6F201CA9A400EFD7C1 /* CreateEmployeeController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateEmployeeController.swift; sourceTree = "<group>"; };
+		3618BF71201CAA1600EFD7C1 /* CreateCompanyController+ImagePicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CreateCompanyController+ImagePicker.swift"; sourceTree = "<group>"; };
+		3618BF73201CACDD00EFD7C1 /* NavBarButtonItems+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NavBarButtonItems+Extension.swift"; sourceTree = "<group>"; };
 		3622DEF62019697D009A3F59 /* CompanyAppModel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = CompanyAppModel.xcdatamodel; sourceTree = "<group>"; };
 		3622DEF8201974EA009A3F59 /* CoreDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataManager.swift; sourceTree = "<group>"; };
+		3622DF1A201C227A009A3F59 /* CompaniesController+Protocols.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CompaniesController+Protocols.swift"; sourceTree = "<group>"; };
+		3622DF1C201C22CD009A3F59 /* CompaniesController+TableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CompaniesController+TableView.swift"; sourceTree = "<group>"; };
 		3634AB5020189B5E001EA7C7 /* CompanyApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CompanyApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		3634AB5320189B5E001EA7C7 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		3634AB5520189B5E001EA7C7 /* CompaniesController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompaniesController.swift; sourceTree = "<group>"; };
 		3634AB5A20189B5E001EA7C7 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		3634AB5D20189B5E001EA7C7 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		3634AB5F20189B5E001EA7C7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		3645F8662018A50700B430D6 /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
+		3645F8662018A50700B430D6 /* UIColor+Themes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+Themes.swift"; sourceTree = "<group>"; };
 		3645F86B2018AB9600B430D6 /* CompanyCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompanyCell.swift; sourceTree = "<group>"; };
-		3645F86E2018ABD200B430D6 /* Company.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Company.swift; sourceTree = "<group>"; };
 		3645F8712018AF0000B430D6 /* CreateCompanyController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateCompanyController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -45,6 +57,42 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		3618BF6B201CA35400EFD7C1 /* Employees */ = {
+			isa = PBXGroup;
+			children = (
+				3618BF6C201CA37000EFD7C1 /* EmployeesController.swift */,
+			);
+			path = Employees;
+			sourceTree = "<group>";
+		};
+		3618BF6E201CA98300EFD7C1 /* CreateEmployee */ = {
+			isa = PBXGroup;
+			children = (
+				3618BF6F201CA9A400EFD7C1 /* CreateEmployeeController.swift */,
+			);
+			path = CreateEmployee;
+			sourceTree = "<group>";
+		};
+		3622DF18201C21DA009A3F59 /* Companies */ = {
+			isa = PBXGroup;
+			children = (
+				3634AB5520189B5E001EA7C7 /* CompaniesController.swift */,
+				3645F86B2018AB9600B430D6 /* CompanyCell.swift */,
+				3622DF1A201C227A009A3F59 /* CompaniesController+Protocols.swift */,
+				3622DF1C201C22CD009A3F59 /* CompaniesController+TableView.swift */,
+			);
+			path = Companies;
+			sourceTree = "<group>";
+		};
+		3622DF19201C21F1009A3F59 /* CreateCompany */ = {
+			isa = PBXGroup;
+			children = (
+				3645F8712018AF0000B430D6 /* CreateCompanyController.swift */,
+				3618BF71201CAA1600EFD7C1 /* CreateCompanyController+ImagePicker.swift */,
+			);
+			path = CreateCompany;
+			sourceTree = "<group>";
+		};
 		3634AB4720189B5E001EA7C7 = {
 			isa = PBXGroup;
 			children = (
@@ -64,40 +112,16 @@
 		3634AB5220189B5E001EA7C7 /* CompanyApp */ = {
 			isa = PBXGroup;
 			children = (
+				3622DF18201C21DA009A3F59 /* Companies */,
+				3622DF19201C21F1009A3F59 /* CreateCompany */,
+				3618BF6B201CA35400EFD7C1 /* Employees */,
+				3618BF6E201CA98300EFD7C1 /* CreateEmployee */,
+				3645F8702018AC2F00B430D6 /* Helpers */,
+				3645F86D2018ABA300B430D6 /* Supporting Files */,
 				3622DEF52019697D009A3F59 /* CompanyAppModel.xcdatamodeld */,
 				3634AB5F20189B5E001EA7C7 /* Info.plist */,
-				3645F86D2018ABA300B430D6 /* Supporting Files */,
-				3645F8702018AC2F00B430D6 /* Helpers */,
-				3645F86A2018AB8200B430D6 /* Model */,
-				3645F8692018AB7C00B430D6 /* View */,
-				3645F8682018AB7500B430D6 /* Controller */,
 			);
 			path = CompanyApp;
-			sourceTree = "<group>";
-		};
-		3645F8682018AB7500B430D6 /* Controller */ = {
-			isa = PBXGroup;
-			children = (
-				3634AB5520189B5E001EA7C7 /* CompaniesController.swift */,
-				3645F8712018AF0000B430D6 /* CreateCompanyController.swift */,
-			);
-			path = Controller;
-			sourceTree = "<group>";
-		};
-		3645F8692018AB7C00B430D6 /* View */ = {
-			isa = PBXGroup;
-			children = (
-				3645F86B2018AB9600B430D6 /* CompanyCell.swift */,
-			);
-			path = View;
-			sourceTree = "<group>";
-		};
-		3645F86A2018AB8200B430D6 /* Model */ = {
-			isa = PBXGroup;
-			children = (
-				3645F86E2018ABD200B430D6 /* Company.swift */,
-			);
-			path = Model;
 			sourceTree = "<group>";
 		};
 		3645F86D2018ABA300B430D6 /* Supporting Files */ = {
@@ -113,8 +137,10 @@
 		3645F8702018AC2F00B430D6 /* Helpers */ = {
 			isa = PBXGroup;
 			children = (
-				3645F8662018A50700B430D6 /* Extensions.swift */,
+				3645F8662018A50700B430D6 /* UIColor+Themes.swift */,
+				3618BF73201CACDD00EFD7C1 /* NavBarButtonItems+Extension.swift */,
 				3622DEF8201974EA009A3F59 /* CoreDataManager.swift */,
+				3618BF69201C26A300EFD7C1 /* Extensions.swift */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -191,10 +217,16 @@
 			buildActionMask = 2147483647;
 			files = (
 				3634AB5620189B5E001EA7C7 /* CompaniesController.swift in Sources */,
-				3645F8672018A50700B430D6 /* Extensions.swift in Sources */,
+				3618BF70201CA9A400EFD7C1 /* CreateEmployeeController.swift in Sources */,
+				3618BF6D201CA37000EFD7C1 /* EmployeesController.swift in Sources */,
+				3618BF72201CAA1600EFD7C1 /* CreateCompanyController+ImagePicker.swift in Sources */,
+				3622DF1B201C227A009A3F59 /* CompaniesController+Protocols.swift in Sources */,
+				3645F8672018A50700B430D6 /* UIColor+Themes.swift in Sources */,
+				3622DF1D201C22CD009A3F59 /* CompaniesController+TableView.swift in Sources */,
 				3634AB5420189B5E001EA7C7 /* AppDelegate.swift in Sources */,
-				3645F86F2018ABD200B430D6 /* Company.swift in Sources */,
+				3618BF6A201C26A300EFD7C1 /* Extensions.swift in Sources */,
 				3622DEF72019697D009A3F59 /* CompanyAppModel.xcdatamodeld in Sources */,
+				3618BF74201CACDD00EFD7C1 /* NavBarButtonItems+Extension.swift in Sources */,
 				3645F86C2018AB9600B430D6 /* CompanyCell.swift in Sources */,
 				3622DEF9201974EA009A3F59 /* CoreDataManager.swift in Sources */,
 				3645F8722018AF0000B430D6 /* CreateCompanyController.swift in Sources */,
