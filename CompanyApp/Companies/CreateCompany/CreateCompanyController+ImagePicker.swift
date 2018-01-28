@@ -23,12 +23,12 @@ extension CreateCompanyController: UIImagePickerControllerDelegate, UINavigation
     
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
         if let editedImage = info[UIImagePickerControllerOriginalImage] as? UIImage {
-            companyImageView.image = editedImage
+            mainView.companyImageView.image = editedImage
         } else if let originalImage = info[UIImagePickerControllerOriginalImage] as? UIImage {
-            companyImageView.image = originalImage
+            mainView.companyImageView.image = originalImage
         }
-        companyImageView.layer.cornerRadius = companyImageView.frame.width / 2
-        companyImageView.clipsToBounds = true
+        mainView.companyImageView.layer.cornerRadius = mainView.companyImageView.frame.width / 2
+        mainView.companyImageView.clipsToBounds = true
         dismiss(animated: true, completion: nil)
     }
     

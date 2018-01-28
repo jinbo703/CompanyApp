@@ -47,5 +47,22 @@ struct CoreDataManager {
         }
     }
     
+    func createEmployee(with name: String) -> (Employee? ,Error?) {
+        let context = persistentContainer.viewContext
+        let employee = NSEntityDescription.insertNewObject(forEntityName: "Employee", into: context) as! Employee
+        employee.name = name
+        
+        let employeeInfo = NSEntityDescription.insertNewObject(forEntityName: "EmployeeInfo", into: context) as! EmployeeInfo
+        employeeInfo.taxId = "345"
+        
+        employee.employeeInfo = employeeInfo
+        
+        do {
+            try context.save()
+            return (employee, nil)
+        } catch let saveErr {
+            return (nil, saveErr)
+        }
+    }
 }
 
